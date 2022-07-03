@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { get_states } from "indian_places";
+import { getStates } from "indian_places";
 import Select from "react-select";
 
 const sort = (arr) => {
@@ -10,7 +10,7 @@ const sort = (arr) => {
 
 export default function WithoutPin() {
   const [states, setStates] = useState(() => {
-    return sort(get_states()).map((item) => ({
+    return sort(getStates()).map((item) => ({
       value: item,
       label: item.name,
     }));
@@ -28,7 +28,7 @@ export default function WithoutPin() {
 
   const onStateChange = (selectState) => {
     setState(selectState);
-    const d = selectState.value.get_districts();
+    const d = selectState.value.getDistricts();
     setDistricts(
       sort(d).map((item) => {
         return { value: item, label: item.name };
@@ -39,7 +39,7 @@ export default function WithoutPin() {
 
   const onDistrictChange = (selectDistrict) => {
     setDistrict(selectDistrict);
-    const p = selectDistrict.value.get_places();
+    const p = selectDistrict.value.getPlaces();
     setPlaces(
       sort(p).map((item) => {
         return { value: item, label: item.name };

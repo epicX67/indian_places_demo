@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Pin.scss";
-import { get_places_by_pin } from "indian_places";
+import { getPlacesByPin } from "indian_places";
 
 export default function Pin() {
   const [pin, setPin] = useState("");
   const [places, setPlaces] = useState([]);
 
   const search = (pin) => {
-    setPlaces(get_places_by_pin(pin));
+    setPlaces(getPlacesByPin(pin));
   };
 
   const onchange = (value) => {
